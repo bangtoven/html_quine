@@ -52,6 +52,11 @@ div::after {
     display: none;
 }
 
+nav { text-align:right; }
+nav a { display:block; }
+nav::before { content:'<nav>'; }
+nav::after { content:'</nav>'; }
+
  a[href]::before {
      content: "<a href='" attr(href) "'>" 
 }
@@ -82,12 +87,15 @@ div::after {
  html {
      max-width:70ch;
      padding:2ch;
+     margin:auto;
      color:#333;
      font-size:1.2em;
-     margin:0 auto;
 }
  body {
      margin:0 auto;
+     display:flex;
+     min-height:100%;
+     flex-direction:column;
 }
 
 /* here is the highly repetitive bit */
@@ -119,6 +127,7 @@ div::after {
      content:'<body>' 
 }
  body::after {
+     margin-top:auto;
      content:'</body>' 
 }
  h1::before {
@@ -140,7 +149,8 @@ div::after {
      content:'</p>' 
 }
  pre::before {
-     content:'<pre>\A' 
+     display:block;
+     content:'<pre>' 
 }
  pre::after {
      content:'</pre>' 
