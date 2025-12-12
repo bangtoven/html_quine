@@ -11,43 +11,27 @@
      text-decoration:none 
 }
 
-/* brutify */
- *::before,*::after {
-     color:rgb(136, 18, 128, 0.5);
-     font-weight:100;
-     font-size:0.713em 
-}
- html {
-     max-width:70ch;
-     padding:2ch;
-     margin:auto;
-     color:#333;
-     font-size:1.2em;
-}
-
-/* here is the highly repetitive bit */
-[data-tag]::before { content: "<" attr(data-tag) attr(data-attrs) ">"; }
-[data-tag]::after { content: "</" attr(data-tag) ">"; }
-
-/* additional styling */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    margin: 0 auto;
-}
-body::after { margin-top: auto }
-nav { text-align: right }
-nav > a { display: block }
-pre::before { display: block }
-
+/* tags with attributes. */
 img {
     margin: 0 auto;
     max-width: 100%;
     height: auto;
 }
-figure[data-src]::before { content: "<img src='"attr(data-src)"'" }
-figure[data-src]::after { content: "/>" }
+figure[src]::before {
+     content: "<img src='"attr(src)"'";
+
+
+}
+figure[src]::after {
+    content: "/>";
+}
+
+div[class]::before {
+    content: "<div class='" attr(class) "'>"
+}
+div::after {
+    content:'</div>' 
+}
 
 li *:not(h2)::before, li *::after { display: block  }
 
@@ -64,7 +48,6 @@ li *:not(h2)::before, li *::after { display: block  }
     -webkit-overflow-scrolling: touch;
     width: 100%;
 }
-.carousel::-webkit-scrollbar { display: none }
 .carousel::before,.carousel::after { 
     display: block;
     position: sticky;
@@ -75,3 +58,33 @@ li *:not(h2)::before, li *::after { display: block  }
     scroll-snap-align: center;
     margin: 0;
 }
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+nav { text-align:right; }
+nav a { display:block; }
+
+/* brutify */
+ *::before,*::after {
+     color:rgb(136, 18, 128, 0.5);
+     font-weight:100;
+     font-size:0.713em 
+}
+ html {
+     max-width:70ch;
+     padding:2ch;
+     margin:auto;
+     color:#333;
+     font-size:1.2em;
+}
+ body {
+     margin:0 auto;
+     display:flex;
+     min-height:100%;
+     flex-direction:column;
+}
+
+/* here is the highly repetitive bit */
+[data-tag]::before { content: "<" attr(data-tag) attr(data-attrs) ">"; }
+[data-tag]::after { content: "</" attr(data-tag) ">"; }
