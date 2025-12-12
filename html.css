@@ -15,7 +15,7 @@
  *::before,*::after {
      color:rgb(136, 18, 128, 0.5);
      font-weight:100;
-     font-size:1.0em 
+     font-size:0.713em 
 }
  html {
      max-width:70ch;
@@ -38,7 +38,7 @@ body {
 }
 body::after { margin-top: auto }
 nav { text-align: right }
-nav a { display: block }
+nav > a { display: block }
 pre::before { display: block }
 
 img {
@@ -48,6 +48,14 @@ img {
 }
 figure[data-src]::before { content: "<img src='"attr(data-src)"'" }
 figure[data-src]::after { content: "/>" }
+
+li *:not(h2)::before, li *::after { display: block  }
+
+.thumb { 
+    display:inline; 
+    max-width:50%; 
+    height:auto; 
+}
 
 .carousel {
     overflow-x: auto;
